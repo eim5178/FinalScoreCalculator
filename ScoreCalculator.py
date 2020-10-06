@@ -2,6 +2,7 @@
 
 #Preliminary design report out of 100 points
 def preliminary_designscoring():
+  print("Preliminary Design scores")
   design_trade_studies = int(input("Enter the design trade studies score out of 15 points: "))
   technical_innovations = int(input("Enter the technical innovations score out of 15 points: "))
   prelim_CAD_models = int(input("Enter the preliminatry CAD models score out of 30 points: "))
@@ -12,6 +13,7 @@ def preliminary_designscoring():
   return total_prelim_score
 #Final technical report score out of 100 points
 def final_technical_report():
+  print("Final Design Scores")
   design_trade_studies = int(input("Enter the design trade studies score out of 5 points: "))
   technical_innovations = int(input("Enter the technical innovations score out of 15 points: "))
   final_CAD_models = int(input("Enter the final CAD models score out of 30 points: "))
@@ -22,6 +24,7 @@ def final_technical_report():
   return total_final_tech_score
 #The total presentation score
 def presentation_score():
+  print("Presentation Scores")
   originality = int(input("Enter the originality score out of 15 points: "))
   presentation = int(input("Enter the presentation score out of 15 points: "))
   engineering = int(input("Enter the engineering score out of 30 points: "))
@@ -97,4 +100,3 @@ def run():
 
 if __name__ == "__main__":
   run()
-
