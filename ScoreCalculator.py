@@ -11,6 +11,7 @@ def preliminary_designscoring():
   report_clarity = int(input("Enter the report clarity score out of 20 points: "))
   total_prelim_score = design_trade_studies+technical_innovations+prelim_CAD_models+fabrication_methods+gaant_chart+report_clarity
   return total_prelim_score
+
 #Final technical report score out of 100 points
 def final_technical_report():
   print("Final Design Scores")
@@ -30,7 +31,7 @@ def presentation_score():
   engineering = int(input("Enter the engineering score out of 30 points: "))
   publicity = int(input("Enter the publicity score out of 15 points: "))
   teamwork = int(input("Enter the flight test results score out of 15 points: "))
-  public_relations = int(input("Enter the report clarity score out of 20 points: "))
+  public_relations = int(input("Enter the report clarity score out of 10 points: "))
   total_presenation_score = originality+presentation+engineering+publicity+teamwork+public_relations
   return total_presenation_score
 
@@ -45,6 +46,7 @@ def max_range_course_lap_scoring(N):
   n = int(input("Enter nth place where 1 is the team with the most laps: "))
   maximum_range_course_score = 100*((N+2)-n)/(N+1)
   return maximum_range_course_score
+
 #The total maximum payload fraction scoring is 50
 def payload_fraction_scoring(N):
   payload_weight = int(input("Enter payload weight:"))
@@ -53,6 +55,7 @@ def payload_fraction_scoring(N):
   n = int(input("Enter nth place where 1 is the highest payload fraction: "))
   maximum_payload_fraction_scoring = 50*((N+2)-n)/(N+1)
   return payload_fraction, maximum_payload_fraction_scoring 
+
 # 25 points are awarded for successful completion of the bonus
 def bonus_scoring():
   bonus = input("Successfully complete bonus? (Y or N)")
@@ -60,11 +63,16 @@ def bonus_scoring():
     return 25
   else:
     return 0
+    
 #This allows to write into a txt file to compile and compare results
-def write_into_txt(total_score,maneuverability_scoring,max_range_lap_scoring,payload_fract_scoring,bonus_score,total_range,payload_fract):
+def write_into_txt(total_score,maneuverability_scoring,max_range_lap_scoring,payload_fract_scoring,bonus_score,total_range,payload_fract,preliminary_design_score,final_technical_report_score,presentation_scoring,total_course_score):
   compile = input("Would you like to export these scores into a txt file to save them? (Y or N)")
   if compile == 'Y' or compile =='y':
     total_score = str(total_score)
+    preliminary_design_score = str(preliminary_design_score)
+    final_technical_report_score = str(final_technical_report_score)
+    presentation_scoring = str(presentation_scoring)
+    total_course_score = str(total_course_score)
     maneuverability_scoring = str(maneuverability_scoring)
     max_range_lap_scoring = str(max_range_lap_scoring)
     payload_fract_scoring = str(payload_fract_scoring)
@@ -73,6 +81,10 @@ def write_into_txt(total_score,maneuverability_scoring,max_range_lap_scoring,pay
     payload_fract = str(payload_fract)
     Scorescompiled = open("Scorescompiled.txt","w")
     Scorescompiled.write(f"The total calculated score is " + total_score +"\n")
+    Scorescompiled.write(f"The total prelim design score is " + preliminary_design_score +"\n")
+    Scorescompiled.write(f"The total calculated course score is " + total_course_score +"\n")
+    Scorescompiled.write(f"The total final technical score is " + final_technical_report_score +"\n")
+    Scorescompiled.write(f"The total calculated presentation score is " + presentation_scoring +"\n")
     Scorescompiled.write(f"The maneuverability score is " + maneuverability_scoring+"\n")
     Scorescompiled.write(f"The total range score is " + total_range+"\n")
     Scorescompiled.write(f"The range course lap score is " + max_range_lap_scoring +"\n")
@@ -89,14 +101,19 @@ def run():
   payload_fract, payload_fract_scoring = payload_fraction_scoring(N)
   bonus_score = bonus_scoring()
   total_score = preliminary_design_score + presentation_scoring+ final_technical_report_score + maneuverability_scoring + max_range_lap_scoring + payload_fract_scoring + bonus_score
+  total_course_score = maneuverability_scoring + max_range_lap_scoring + payload_fract_scoring + bonus_score
   print(f"The total calculated score is {total_score}")
+  print(f"The total calculated prelim design score is {preliminary_design_score}")
+  print(f"The total calculated final technical score is {final_technical_report_score}")
+  print(f"The total presenation score is {presentation_scoring}")
+  print(f"The total course score is {total_course_score}")
   print(f"The maneuverability score is {maneuverability_scoring}")
   total_range = max_range_lap_scoring + payload_fract_scoring
   print(f"The total range score is {total_range}")
   print(f"The range course lap score is {max_range_lap_scoring}")
   print(f"The payload fraction score is {payload_fract_scoring}")
   print(f"The payload fraction is {payload_fract}")
-  write_into_txt(total_score,maneuverability_scoring,max_range_lap_scoring,payload_fract_scoring,bonus_score,total_range,payload_fract)
+  write_into_txt(total_score,maneuverability_scoring,max_range_lap_scoring,payload_fract_scoring,bonus_score,total_range,payload_fract,preliminary_design_score,final_technical_report_score,presentation_scoring,total_course_score)
 
 if __name__ == "__main__":
   run()

@@ -1,6 +1,0 @@
-The total calculated score is 635.0
-The maneuverability score is 150.0
-The total range score is 150.0
-The range course lap score is 100.0
-The payload fraction is 1.0
-The payload fraction score is 50.0
